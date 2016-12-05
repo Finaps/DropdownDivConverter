@@ -78,6 +78,17 @@
             <description>A entity driven microflow which is triggered if the main split button is clicked.</description>
             <returnType type="Object" entityProperty="contextObject" ></returnType>
         </property>
+                <property key="mfWhenOpen" type="boolean" defaultValue="false" required="true">
+            <caption>Use on click microflow</caption>
+            <category>Behaviour</category>
+            <description>Kick of a flow when dropdown is opened</description>
+        </property>
+        <property key="mfOnOpen" type="microflow" required="false" defaultValue="">
+            <caption>On click microflow</caption>
+            <category>Behaviour</category>
+            <description>The microflow that will be kicked off</description>
+            <returnType type="Boolean"></returnType>
+        </property>
         <property key="contextObject" type="entity" required="false">
             <caption>Context object</caption>
             <category>Split button</category>

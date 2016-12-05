@@ -40,6 +40,9 @@ define([
         autoClose: "",
         splitButtonActive: "",
         splitButtonClicked:"",
+        mfOnOpen: "",
+        mfWhenOpen: "",
+        
 
         // Internal variables. Non-primitives created in the prototype are shared between all widget instances.
         _handles: null,
@@ -134,6 +137,21 @@ define([
                     event.stop(e);
                     var dropdown = null;
                     
+                    // FINAPS: custom on lick microflow logic
+                    if (this.mfWhenOpen) {
+                        mx.data.action({
+                            params: {
+                                origin: this.mxform,
+                                actionname: this.mfOnOpen
+                            },
+                            callback: function (success) {
+                                // if success was true, the microflow was indeed followed through
+                            },
+                            error: function (error) {
+                                // if there was an error
+                            }
+                        }, this);
+                    }
                     for(dropdown in this._allDropDowns) {
                         if (this._allDropDowns.hasOwnProperty(dropdown) && dropdown !== this.id){
                             if (this._allDropDowns[dropdown]._isOpen === true) {
